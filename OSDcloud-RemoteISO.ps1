@@ -16,7 +16,7 @@ if (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue) {
         Write-Host "PSGallery repository is already trusted."
     } else {
         # Trust the PSGallery repository
-        Write-Host "Set Repository trus for PSGallery"
+        Write-Host "Set Repository trust for PSGallery"
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
     }
 } else {
@@ -51,7 +51,7 @@ if (Get-Module -Name OSD -ListAvailable) {
 $disks = Get-Disk | Where-Object BusType -eq USB
 foreach ($disk in $disks) {
     if (($disk.Size / 1GB) -gt 7 -and ($disk.Size / 1GB) -lt 200) {
-        Write-Output "USB drive found with size"
+        Write-Output "USB drive found"
     }
     else {
         Write-Output "No suitable USB drive found."
