@@ -1,7 +1,7 @@
 
 
 # Check if the NuGet provider is already installed
-if (Get-PackageProvider -Name NuGet -ListAvailable) {
+if (Get-PackageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue) {
     Write-Host "NuGet provider is already installed."
 } else {
     # Install the NuGet provider
@@ -45,6 +45,18 @@ if (Get-Module -Name OSD -ListAvailable) {
     Write-Host "OSD module imported successfully."
 } else {
     Write-Host "Failed to import OSD module."
+}
+
+
+$disks = Get-Disk | Where-Object BusType -eq USB
+foreach ($disk in $disks) {
+    if (($disk.Size / 1GB) -gt 7 -and ($disk.Size / 1GB) -lt 200) {
+        Write-Output "USB drive found with size"
+    }
+    else {
+        Write-Output "No suitable USB drive found."
+        Exit
+    }
 }
 
 Write-host "Creating OSDCloud USB with ISO from URL"
