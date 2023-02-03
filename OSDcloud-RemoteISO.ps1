@@ -22,6 +22,9 @@ if (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue) {
     Register-PSRepository -Name PSGallery -SourceLocation "https://www.powershellgallery.com/api/v2/" -InstallationPolicy Trusted
 }
 
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+
 # Check if the OSD module is already installed
 if (Get-Module -Name OSD -ListAvailable) {
     Write-Host "OSD module is already installed."
