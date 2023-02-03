@@ -33,6 +33,7 @@ if (Get-Module -Name OSD -ListAvailable) {
     Write-Host "OSD module is already installed."
 } else {
     # Install the OSD module
+    Write-host "Installing OSD module"
     Install-Module -Name OSD -Force
 }
 
@@ -46,3 +47,5 @@ if (Get-Module -Name OSD -ListAvailable) {
     Write-Host "Failed to import OSD module."
 }
 
+Write-host "Creating OSDCloud USB with ISO from URL"
+New-OSDCloudUSB -fromIsoUrl https://cmsaas.itrelation.dk/OSDCloud_Noprompt.iso
