@@ -1,4 +1,5 @@
 
+Write-Host "Starting Remote OSDCloud USB Builder"
 
 # Check if the NuGet provider is already installed
 if (Get-PackageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue) {
