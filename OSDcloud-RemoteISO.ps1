@@ -5,6 +5,7 @@ if (Get-PackageProvider -Name NuGet -ListAvailable) {
     Write-Host "NuGet provider is already installed."
 } else {
     # Install the NuGet provider
+    Write-Host "Installing NuGet provider"
     Install-PackageProvider -Name NuGet -Force
 }
 
@@ -15,6 +16,7 @@ if (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue) {
         Write-Host "PSGallery repository is already trusted."
     } else {
         # Trust the PSGallery repository
+        Write-Host "Set Repository trus for PSGallery"
         Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
     }
 } else {
@@ -22,6 +24,7 @@ if (Get-PSRepository -Name PSGallery -ErrorAction SilentlyContinue) {
     Register-PSRepository -Name PSGallery -SourceLocation "https://www.powershellgallery.com/api/v2/" -InstallationPolicy Trusted
 }
 
+Write-Host "Set ExecutionPolicy to Bypass for Process"
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 
 
